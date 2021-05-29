@@ -1,0 +1,930 @@
+/* 
+
+    css topics to learn: 
+    ~~~~~~~~~~~~~~~~~~~~~
+ 
+    As per  https://github.com/kamranahmedse/developer-roadmap: 
+
+     FLOATS, POSITIONING, DISPLAY, BOX MODEL,
+   
+     CSS GRID, FLEX BOX, MAKING LAYOUTS, 
+     
+     RESPONSIVE DESIGN AND MEDIA QUERIES
+
+
+
+    useful inherited css properties:
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+       https://stackoverflow.com/a/5612360
+
+       border-collapse, border-spacing, caption-side, color, cursor,
+       font-family, font-size, font-style, font-variant, font-weight, font,
+       letter-spacing, line-height, text-align, text-indent, text-transform,
+       word-spacing, visibility
+    
+
+
+    glossary:
+    ~~~~~~~~~~
+
+     >> CSS Syntax glossary
+ 
+              https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax
+
+
+
+     >> ^float, clear, clearfix
+ 
+          float clear imagination:  https://www.youtube.com/watch?v=xara4Z1b18I                    
+
+                   clear clearfix: https://www.w3schools.com/css/css_float_clear.asp 
+
+                   float examples: https://www.w3schools.com/css/css_float_examples.asp
+
+     
+
+     >> CSS positioning
+
+                   https://www.youtube.com/watch?v=jx5jmI0UlXU
+                   https://www.youtube.com/watch?v=gD3G67oPg-w
+
+                   https://www.w3schools.com/css/css_positioning.asp
+
+                   https://webplatform.github.io/docs/tutorials/absolute_and_fixed_positioning/
+                   
+                      ^^Absolutely positioned elements are removed entirely from the document flow.
+                        They will overlap with other content unless you make room for them.
+
+                        If all child elements of a container are absolutely positioned,
+                        the parent’s height will collapse to zero. Absolutely positioned elements
+                        are positioned with respect to a containing block, which is the nearest
+                        POSITIONED ANCESTOR.
+
+                        If there is no POSITIONED ANCESTOR,
+                        the document/html (TOP MOST ANCESTOR??) will be the containing block.
+
+
+
+     >> selectors
+
+                     https://webplatform.github.io/docs/css/selectors/
+
+   
+     >> combinators
+  
+                     A CSS selector can contain more than one simple selector.
+                     Between the simple selectors, we can include a combinator: 
+                      
+                            selector1 COMBINATOR selector2 { }
+
+
+                     https://www.w3schools.com/css/css_combinators.asp
+
+
+     >> shorthand
+
+
+
+     >> inheritance/cascading
+
+ 
+
+     >> pseudo-classes
+        
+             https://www.w3schools.com/css/css_pseudo_classes.asp
+
+
+     >> pseudo-elements
+
+             https://www.w3schools.com/css/css_pseudo_elements.asp
+
+
+    >>  css links styling
+
+             https://www.w3schools.com/css/css_link.asp
+
+                - <a> tags a.k.a links have states: 
+                   link: unvisited a with href, visited, hover, active: mouse click and hold state                
+
+                - order in css is important link, visited, hover, active
+
+                - to understand WHY THEY HAVE TO APPEAR IN ORDER AND HOW THEY WORK:
+
+                        **https://stackoverflow.com/a/16994433   
+
+                                - simultaneously 2 or more states maybe applicable like link and hover
+                                - inheritance happens and specifity rule is used
+
+
+                - turns out these are called dynamic-pseudo-classes and can be 
+                  used for other elements and not just <a> tags:
+
+                      https://www.peachpit.com/articles/article.aspx?p=1639627&seqNum=3
+
+
+
+    >> css flexbox
+
+             https://www.youtube.com/watch?v=fYq5PXgSsbE
+
+
+
+    stackoverflow:
+    ~~~~~~~~~~~~~~~
+
+
+    
+    >>  ^^div height and margin of child element: 
+
+          >  https://stackoverflow.com/questions/1762539/margin-on-child-element-moves-parent-      
+             element#:~:text=Margin%20does%20not%20affect%20the,margin%20to%20the%20parent's%20padding.
+
+
+             2nd reply from above link: 
+
+             "Margin does not affect the child's position in relation to its parent,
+              unless the parent has padding, in which case most browsers will then
+              add the child's margin to the parent's padding."
+
+
+          > https://www.sitepoint.com/collapsing-margins/
+
+
+
+
+    >> h1 does not inherit font-weight from parent: 
+
+                - https://stackoverflow.com/a/40816620
+
+                - only INHERITED PROPERTIES are inherited WHEN 
+                  default values are not specified in the child elements
+
+                - default css settings COULD BE set in user-agent - browser, 
+                  or could be linked from other css files
+
+
+
+
+*/
+
+
+
+/*
+ * Orange color: #e67e22
+ */
+
+
+/*     https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors      */
+
+
+/* --------------------------------------- */
+/*   BASIC SETUP   */
+/* --------------------------------------- */
+
+
+
+/* 
+
+    >> https://webplatform.github.io/docs/css/
+
+
+    >> ^CSS inheritance : 
+        Vimp -> https://webplatform.github.io/docs/tutorials/inheritance_and_cascade/
+
+               https://stackoverflow.com/questions/5805040/relationship-between-important-and-css-specificity#:~:text=2%20Answers&text=Specificity%20in%20CSS%20only%20concerns,plays%20no%20role%20in%20specificity.
+
+ 
+    >> All CSS properties are not inherited (ex: margin, padding), 
+       so putting  html { margin:0, padding: 0} will not 
+       make all tags have their margin and padding set to zero
+       so we use universal wild card selector to overwrite
+       default values of margin and padding in ALL elements in page
+
+
+          https://www.sitepoint.com/css-inheritance-introduction/
+          
+          ^The beauty of letting inheritance do the job is that it is
+           only necessary to update one place to change the colors if
+           you decide to update the color scheme later.
+
+          ^You can force inheritance — even for properties that are
+           not inherited by default — by using the inherit keyword.
+
+          ^Forcing inheritance is not a common practice.
+
+
+          
+
+
+    >> Universal Selector purpose: 
+
+          https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors
+
+        **https://softwareengineering.stackexchange.com/a/178072 
+
+                 - blocks inheritance
+
+                 - replaces default 'values'
+
+                 - more specific selector replace values given by *
+
+                 - refer 'suggestions' section in above link for when to use body and *
+
+                 - also refer https://softwareengineering.stackexchange.com/a/178053
+
+
+*/
+
+
+* {
+    
+    /*    
+       https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+    
+       margin creates extra space outside the element while 
+       padding creates extra space inside the element
+    */
+    margin: 0;
+    
+    
+    /* 
+       https://developer.mozilla.org/en-US/docs/Web/CSS/padding
+      
+       padding creates extra space inside the element while 
+       margin creates extra space outside the element
+    */
+    padding: 0;
+    
+
+    
+    /*
+    
+   box-sizing:
+
+      https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model
+      https://www.w3schools.com/cssref/css3_pr_box-sizing.asp
+    
+      this property defines how the width and height
+      of an element are calculated: should they include padding and borders, or not
+
+    
+       value           description
+    
+       content-box     Default. Width and height properties includes only content. 
+                       Border and Padding are not included
+    
+       border-box      Width and height properties include content, padding and border
+    
+       initial         not required now.
+    
+       inherit         not required now.
+     
+    */    
+    box-sizing: border-box;
+    
+}
+
+
+
+html {
+    
+    /*
+
+         https://www.w3schools.com/cssref/pr_background-color.asp:
+
+         The background of an element is the total size of the element,
+         including padding and border (but not the margin).
+     
+        
+         ^https://stackoverflow.com/questions/15896785/is-the-border-color-of-an-element-affected-by-its-background-color  
+
+         https://developer.mozilla.org/en-US/docs/Web/CSS/background-color
+         https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip
+
+    */
+    background-color: #fff;
+    
+    
+    /* 
+       https://www.w3schools.com/cssref/pr_text_color.asp
+       text color by default
+    */
+    color:#555;
+    
+    font-family: 'Lato', 'Arial', sans-serif;
+    
+    /* we choose 300 as default from 
+       100,300,400 options we selected while
+       importing google Lato font */
+    
+    font-weight: 300;
+    
+    /* font-size by default */
+    font-size: 20px;
+    
+    
+    /* 
+        https://developer.mozilla.org/en-US/docs/Web/CSS/text-rendering
+    
+        tell the rendering engine to optimize the text for 
+        legibility. one could also set values like:
+        auto, optimizeSpeed, geometricProgression
+    
+    */
+    text-rendering: optimizeLegibility;
+}
+
+
+/* clear the floats so that meals section
+   has non-zero size and meal images are
+   drawn in meals section and there is space
+   between meals section and how-it-works section */
+.clearfix { zoom: 1;}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+/* --------------------------------------- */
+/*   REUSABLE COMPONENTS   */
+/* --------------------------------------- */
+
+
+/* row is a selector used in GROUPING SECTION of grid.css
+   file, to arrange content in rows before one could apply
+   span-x-of-y column styling
+
+   ^^refer  "The Markup Section" and "How it Works" subsection 
+   at http://www.responsivegridsystem.com/
+
+   the group selector in new grid.css is same as
+   row in old grid.css used in this project
+    
+*/
+
+.row {
+    max-width: 1100px;
+    
+    /* 
+       https://developer.mozilla.org/en-US/docs/Web/CSS/margin
+    
+        >> when two values are assigned to margin then
+         margin-top, margin-bottom take first value & 
+         margin-left, margin-right take second value
+    
+        >> when margin takes auto value - the browser selects a 
+           suitable margin to use,for example, in certain cases
+           this value can be used to center an element.
+     */
+    margin: 0 auto;
+}
+
+
+section {
+    padding: 80px 0;
+}
+
+.box {
+   padding: 1%;
+}
+
+/*------- HEADINGS -----------*/
+
+h1, 
+h2,
+h3 {    
+    /*
+       usually h1 elements come
+       with bold formatting:
+             https://stackoverflow.com/a/40816620
+    */
+    font-weight: 300;
+    
+    text-transform: uppercase;
+}
+
+h1 {
+    
+     /*
+     normalize.css gives non-zero margin
+    */
+    margin-top: 0;
+    
+    margin-bottom: 20px;
+    /*
+      https://developer.mozilla.org/en-US/docs/Web/CSS/color
+    
+      color: sets foreground color value of an element's text,
+             text decorations and sets currentcolor value. 
+    */
+    color: #fff;
+    
+     /*
+      defined relative to font-size in
+      parent html element
+    */
+    font-size: 240%;
+    
+    /* https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing */   
+    letter-spacing: 1px;    
+    word-spacing: 4px;
+    
+}
+
+h2 {
+  font-size: 180%;
+  letter-spacing: 1px;    
+  word-spacing: 2px;
+  text-align: center;
+  margin-bottom: 30px; 
+    
+}
+
+h3 {
+  font-size: 110%;
+  margin-bottom: 15px;    
+}
+
+/*
+   code to have a nice 
+   little yellow line 
+   between h2 and text
+
+   h2:after is psuedo-class 
+   to have some stuff appear
+   after h2 as the name indicates
+*/
+h2:after {
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+    
+    /* note: whenever we use an after 
+             pseudo-class we have to 
+             specify its content */
+    
+    content: " " ; /* we don't want any words to appear in this case */
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+/*------- PARAGRAPHS ----------*/
+
+.long-copy {
+    /* 
+         info: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+     visually: https://smad.jmu.edu/shen/webtype/lineheight.html
+    */
+    line-height: 145%;
+    
+    width: 80%;    
+    /*
+      work-around to center the text
+      margin-right = total-width -  margin-left - text-width
+      margin-right = 100% - 80% - 10% = 10%
+    */
+    margin-left: 10%;
+    
+}
+
+.box p {
+    font-size: 90%;
+    line-height: 145%;
+}
+
+/*------- ICONS ----------*/
+
+.icon-big {
+    font-size: 350%;
+    display: block; /* to force line break */
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+.icon-small {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    color: #e67e22;
+    font-size: 120%;
+    
+    /* secrets to align text and icons */
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top:  -5px; /* takes space away, will pull icons 5px to top */
+    margin-right: 10px;
+}
+
+/*------- LINKS ----------*/
+
+a:link,
+a:active {
+    color: #e67e22;
+    text-decoration: none; 
+}
+
+/*------- BUTTONS ----------*/
+
+
+/*
+
+  - buttons or links in general in CSS can 
+    have different states: link, visited, active, hover
+   
+    .btn:link, .btn:visited,
+    .btn:hover, .btn:active 
+     are called psuedo-classes
+
+
+  - link states mentioned above have 
+    to appear in order, refer
+    https://stackoverflow.com/a/16994433
+    for the concept and reasons
+
+*/
+
+.btn:link,
+.btn:visited {
+    display: inline-block;
+    
+    /*
+       padding in all directions
+       for inline-block elements
+    */
+    padding: 10px 30px 10px 30px;
+    font-weight: 300;
+    
+    /* remove underlining of text for buttons */
+    text-decoration: none;
+    
+    border-radius: 700px;
+    
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+
+.btn-full:link,
+.btn-full:visited {
+    background-color: #e67e22;
+    
+    /*  
+
+       https://www.w3schools.com/cssref/pr_border.asp
+
+       If border-color is omitted, the color applied 
+       will be the color of the text.
+
+     */
+
+
+    /* make buttons look same size */
+    border: 1px solid #e67e22;
+    color: #fff;
+    
+    /* space between both buttons*/
+    /* in hover, active state why we don't 
+       explicity set margin-right to 20px ?? */
+    margin-right: 20px; 
+    
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+
+.btn:hover,
+.btn:active {
+    background-color: #cf6d17;
+}
+
+
+.btn-full:hover,
+.btn-full:active {
+    border: 1px solid #cf6d17;
+    
+}
+
+
+.btn-ghost:hover,
+.btn-ghost:active {
+    border: 1px solid #cf6d17;
+    color: #fff;
+}
+
+/* --------------------------------------- */
+/*   HEADER   */
+/* --------------------------------------- */
+
+header {
+    
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero.jpg);
+    
+    /* 
+      https://developer.mozilla.org/en-US/docs/Web/CSS/background-size
+    
+      background-size CSS property sets the size of 
+      element's background image, the image can be left
+      to its natural size, stretched or constrained to 
+      fit the available space
+     
+      background-size: content | cover | auto | <length> | <percentage>
+      refer link for more info
+    
+    */
+    
+    background-size: cover;
+    
+    
+    /* 
+       https://developer.mozilla.org/en-US/docs/Web/CSS/background-position
+    
+      The background-position CSS property sets the
+      initial position for each background image.
+    
+      The position is relative to the
+      position layer set by background-origin.
+ 
+    */
+    
+    background-position: center;
+    
+    /* browser view port related */
+    height: 100vh;
+}
+
+.hero-text-box {
+    
+    /*
+       not using responsive fluid grid
+       we set up before, because we want
+       this box to be an absolutely positioned
+       box, as that is the only way we can
+       vertically and horizontally center it
+    */
+    position: absolute;
+    width: 1100px;
+    
+    /*
+       https://developer.mozilla.org/en-US/docs/Web/CSS/top
+    
+            The top CSS property participates in specifying
+            vertical position of a positioned element, it has no
+            effect on non-positioned elements.
+      
+      top: <length> | <percentage> | auto
+
+    */
+    top: 50%;
+    
+    
+    left: 50%;
+    
+    /* 
+        https://developer.mozilla.org/en-US/docs/Web/CSS/transform
+    
+        The transform CSS property lets you 
+        rotate, scale, skew, or translate an element,
+        it modifies the coordinate space of
+        the CSS visual formatting model.
+    
+        https://stackoverflow.com/a/21175671
+    
+    */
+    transform: translate(-50%, -50%);
+    
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+
+.main-nav {
+    float: right;
+    list-style: none;
+    margin-top: 55px;
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+    
+    /* add space between the text
+       and border-bottom solid line */
+    padding: 8px 0;
+    
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    
+    /* we need transition
+       effect on border-bottom property */
+    
+    transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+    /* now inorder for this to happen
+       we need this property to exist
+       before hovering over it, so
+       in link & visited state we
+       have transparent border-bottom
+     */
+    
+    border-bottom: 2px solid #e67e22;
+}
+
+/* --------------------------------------- */
+/*   FEATURES   */
+/* --------------------------------------- */
+
+.section-features .long-copy {
+   margin-bottom: 30px;     
+}
+
+/* --------------------------------------- */
+/*   MEALS   */
+/* --------------------------------------- */
+
+.section-meals {
+    padding: 0;
+}
+
+.meals-showcase {
+    list-style:none;  /* we don't want bullet point */
+    width: 100%;
+}
+
+.meals-showcase li {
+    display: block; /* why ?? */
+    float: left;
+    width:25%; /* need 4 li elements in one row */
+}
+
+.meal-photo {
+    /* 
+      this element with meal class 
+      must have a width of 100% of it's parent,
+      implies 25% screen width
+    */
+    
+    width: 100%;
+    
+    /* remember when h1 element's margin is set to zero
+       despite margin:0 in root element, this is because of normalize.css
+       her also we set margin:0 explicity because of normalize.css */     
+    margin: 0;
+   
+    /*
+       https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+    
+       image overflows due to scaling
+       on transition, we don't want it
+       to overflow beyond container so 
+       we hide that part which overflows
+    */
+       
+    overflow: hidden;
+    
+    /* gives a dark background to images */
+    background-color: #000;
+}
+
+.meal-photo img {
+    
+    /* 
+         https://developer.mozilla.org/en-US/docs/Web/CSS/opacity
+     */
+    opacity: 0.7;
+    /* assure image is exactly 
+       as wide as it's container */
+    width: 100%; 
+    height: auto;
+    transform: scale(1.15);
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.meal-photo img:hover {
+    transform: scale(1.03);
+    
+    /*
+       https://developer.mozilla.org/en-US/docs/Web/CSS/opacity
+    */
+    opacity: 1;
+}
+
+
+/* --------------------------------------- */
+/*   HOW IT WORKS   */
+/* --------------------------------------- */
+
+/*
+   giving a feel of new section
+   by adding a subtle variation of
+   white as background-color
+*/
+.section-steps {
+    background-color: #f4f4f4;
+}
+
+.steps-box {
+    margin-top: 30px;
+}
+
+/*
+  first-child & last-child selectors
+  are useful zero classes
+ */
+
+.steps-box:first-child {
+    margin-top: 30px;
+
+    /*
+       text-align not only works for text but also for
+       inline and inline block elements, and img 
+       is an inline block element 
+      
+        https://stackoverflow.com/questions/2402761/is-img-element-block-level-or-inline-level
+    */
+       
+    text-align: right;
+    padding-right: 3%; /* responsive and fluid layout */
+}
+
+.steps-box:last-child {
+    margin-top: 70px;
+    padding-left: 3%;   
+}
+
+.app-screen {
+    width: 40%;
+}
+
+.works-step {
+    /* for all works-step
+       (except last one, see below) */
+    margin-bottom: 50px;
+}
+
+/* another selector */
+.works-step:last-of-type {
+    
+    /* so that app store images 
+       appear near the bottom of phone */
+    margin-bottom: 80px;    
+}
+
+.works-step div {
+    color: #e67e22; 
+    border: 2px solid #e67e22;
+    /* 
+       don't allow line-breaks
+       so text can be adjacent 
+       to the numbers
+    */
+    display: inline-block;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    font-size: 150%;
+    margin-right: 25px
+}
+
+.btn-app img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+
+/* --------------------------------------- */
+/*   CITIES   */
+/* --------------------------------------- */
+
+.box img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.city-feature {
+    margin-bottom: 5px;
+}

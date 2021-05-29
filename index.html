@@ -1,0 +1,324 @@
+<!-- ^Use LIVE PREVIEW in brackets to see the changes, opening index file
+      MAY NOT show all styling and html changes on browser -->
+
+
+<!-- 
+
+
+> HTML element types: 
+
+
+  a. refer the pic "Visually, block and inline elements" in link below:
+     https://codeburst.io/block-level-and-inline-elements-the-difference-between-div-and-span-2f8502c1f95b
+
+
+
+  b. block elements:  START ON NEW-LINE AND TAKE UP ENTIRE WIDTH OF PAGE LEFT TO RIGHT
+                      BLOCK ELEMENTS HAVE HEIGHT AND WIDTH- https://www.youtube.com/watch?v=CCIVNo8oqow
+                      ex: div, h1 to h6, list tags, p, form, header, footer, section 
+
+
+
+  c. inline elements: DO NOT START ON NEW-LINE AND TAKE UP ONLY AS MUCH SPACE AS NEEDED
+                      INLINE ELEMENTS DO NOT HAVE HEIGHT AND WIDTH
+
+                      for inline elements padding, margin can be defined in
+                      left and right direction only
+                      https://stackoverflow.com/questions/42572056/why-margin-top-and-bottom-is-missing
+
+
+                      ex: a, em, img, span -> DO NOT START ON NEW-LINE
+
+
+
+  d. block inline elements: 
+
+               https://medium.com/@DaphneWatson/css-display-properties-block-inline-and-inline-block-how-to-tell-the-difference-7d3a1e6e3051
+
+                            LIKE INLINE ELEMENTS DO NOT START ON NEW LINE, 
+                            PADDING AND MARGIN CAN BE APPLIED ON ALL FOUR SIDES
+                            unlike regular inline elements
+
+                            HEIGHT AND WIDTH CAN BE SET FOR BLOCK INLINE ELEMENTS
+                            
+                            
+                            
+
+
+> Ingredients for responsive web design: 
+
+
+           a. Fluid Grid: all layout elements should use relative units
+                          like percentages rather than absolute units
+                          like pixels
+
+
+           b. Flexible images: also sized in relative units
+
+
+           c. Media Queries: allow us to specify different CSS style rules
+                             for different browser widths
+
+
+
+>  Chants: 
+
+          a. "The entire HTML, CSS, JS is SEEN AND RUN - INTERPRETED BY BROWSER"
+
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>   
+    <link rel="stylesheet" type="text/css" href="vendor/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css/grid.css">
+    <link rel="stylesheet" type="text/css" href="vendor/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css">
+    
+    <!--  Google Fonts - Lato -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+    <title> Omnifood </title>   
+ </head>
+
+
+ <body>    
+     
+     <!--  https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header 
+        
+           header tag: represents introductory content, typically a group of 
+                       introductory & navigational aids. It may contain heading,
+                       logo, search form, author name and other elements
+                     
+                       <header> tag hints search engines that this is not 
+                       like any other usual div element & semantically is different
+
+                       other tags like this: <nav>, <footer>, <main>,  ...
+     --> 
+     
+     <header>
+         
+         <!--   https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav -->
+         <nav>
+            <div class="row">
+               <img src="resources/img/logo-white.png" alt="Omnifood Logo" class="logo">
+               <ul class="main-nav">
+                   <li> <a href="#">Food delivery</a> </li>
+                   <li> <a href="#">How it works</a>  </li>
+                   <li> <a href="#">Our Cities</a>    </li>
+                   <li> <a href="#">Sign Up</a>        </li>
+               </ul>
+             </div>
+         </nav>
+         
+         <div class="hero-text-box">
+             
+             <!--
+                  each web page should have
+                  only one main heading - h1 element
+               -->
+             <h1>Goodbye junk food.<br>Hello super healthy meals.</h1>
+             <a class="btn btn-full" href="#">I'm hungry</a>
+             <a class="btn btn-ghost" href="#">Show me more</a>
+         </div>     
+     </header>
+     
+     <section class="section-features">
+        <div class="row">
+           <!-- h1 is already used once --> 
+           <h2> Get food fast &mdash; not fast food.</h2>    
+           <p class="long-copy">
+               Hello, we’re Omnifood, your new premium food delivery service. We know you’re always busy. No time for cooking. So let us take care of that, we’re really good at it, we promise!
+           </p>    
+        </div>
+         
+    
+        <div class="row">
+            <!-- if you want to change the div below, never touch
+                 the css styles you borrowed from fluid grid file grid.css,
+                 instead add a new class and style that  -->
+            <div class="col span-1-of-4 box">
+                <i class="ion-ios-infinite icon-big"></i>
+                <h3>Up to 365 days/year</h3>    
+                <p>
+                   Never cook again! We really mean that. Our subscription plans include up to 365 days/year coverage. You can also choose to order more flexibly if that's your style.
+                </p>
+            </div>
+             <div class="col span-1-of-4 box">
+                <i class="ion-ios-stopwatch-outline icon-big"></i> 
+                <h3>Ready in 20 minutes</h3>    
+                <p>
+                   You're only twenty minutes away from your delicious and super healthy meals delivered right to your home. We work with the best chefs in each town to ensure that you're 100% happy.
+                </p>
+            </div>
+             <div class="col span-1-of-4 box">
+                <i class="ion-ios-nutrition-outline icon-big"></i>
+                <h3>100% organic</h3>    
+                <p>
+                   All our vegetables are fresh, organic and local. Animals are raised without added hormones or antibiotics. Good for your health, the environment, and it also tastes better!
+                </p>
+            </div>
+             <div class="col span-1-of-4 box">
+                <i class="ion-ios-cart-outline icon-big"></i> 
+                <h3>Order anything</h3>    
+                <p>
+                  We don't limit your creativity, which means you can order whatever you feel like. You can also choose from our menu containing over 100 delicious meals. It's up to you!
+                </p>
+            </div>
+        </div> 
+     </section>
+     
+     <section class="section-meals">
+       <!-- clearfix is added ul elements 
+            because li elements have float property
+            and ul is parent of li -->
+       <ul class="meals-showcase clearfix">
+           <li>
+               <!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure -->
+               <figure class="meal-photo">
+                 <img src="resources/img/1.jpg" alt="Korean bibimbap with egg and vegetables">
+               </figure>
+           </li>
+           <li>
+               <figure class="meal-photo">
+                 <img src="resources/img/2.jpg" alt="Simple italian pizza with cherry tomatoes">    
+               </figure>
+           </li>
+           <li>
+               <figure class="meal-photo">
+                 <img src="resources/img/3.jpg" alt="Chicken breast steak with vegetables">   
+               </figure>
+           </li>
+           <li>
+               <figure class="meal-photo">
+                 <img src="resources/img/4.jpg" alt="Autumn pumpkin soup">
+               </figure>
+           </li>
+             <li>
+               <figure class="meal-photo">
+                 <img src="resources/img/5.jpg" alt="Paleo beef steak with vegetables">
+               </figure>
+           </li>
+             <li>
+               <figure class="meal-photo">
+                 <img src="resources/img/6.jpg" alt="Healthy baguette with egg and vegetables">
+               </figure>
+           </li>
+             <li>
+               <figure class="meal-photo">
+                 <img src="resources/img/7.jpg" alt="Burger with cheddar and bacon">
+               </figure>
+           </li>
+             <li>
+               <figure class="meal-photo">
+                 <img src="resources/img/8.jpg" alt="Granola with cherries and strawberries">
+               </figure>
+           </li>
+       </ul>
+     </section>
+     
+     <section class="section-steps">
+        <div class="row">
+            <h2>How it works &mdash; Simple as 1, 2, 3</h2>
+        </div>
+        
+        <div class="row">
+            <div class="col span-1-of-2 steps-box">
+                <img src="resources/img/app-iPhone.png" alt="Omnifood app on iPhone" class="app-screen">
+            </div>
+            <div class="col span-1-of-2 steps-box">
+                <div class="works-step">
+                    <div>1</div>
+                    <p>Choose the subscription plan that best fits your needs and sign up today.</p>
+                </div>
+                <div class="works-step">
+                    <div>2</div>
+                    <p>Order your delicious meal using our mobile app or website. Or you can even call us!</p>
+                </div>
+                <div class="works-step">
+                    <div>3</div>
+                    <p>Enjoy your meal after less than 20 minutes. See you the next time!</p>
+                </div>
+                <a href="#" class="btn-app"><img src="resources/img/download-app.svg" alt="App Store Button"></a>
+                <a href="#" class="btn-app"><img src="resources/img/download-app-android.png" alt="Play Store Button"></a>
+            </div>
+        </div> 
+     </section>
+     
+     <section class="section-cities">
+        <div class="row">
+            <h2>We're currently in these cities</h2>
+        </div>
+        <div class="row">
+            <div class="col span-1-of-4 box">
+               <img src="resources/img/lisbon-3.jpg" alt="Lisbon">
+               <h3>Lisbon</h3>
+               <div class="city-feature">
+                   <i class="ion-ios-person icon-small"></i>
+                    1,600 happy eaters
+               </div>    
+               <div class="city-feature">
+                   <i class="ion-ios-star icon-small"></i>
+                    60+ top chefs
+               </div>    
+               <div class="city-feature">
+                   <i class="ion-social-twitter icon-small"></i>
+                   <a href="#">@omnifood_lx</a>
+               </div>    
+            </div>
+            <div class="col span-1-of-4 box">
+               <img src="resources/img/san-francisco.jpg" alt="San Francisco">
+               <h3>San Francisco</h3>
+               <div class="city-feature">
+                   <i class="ion-ios-person icon-small"></i>
+                    3700+ happy eaters
+               </div>    
+               <div class="city-feature">
+                   <i class="ion-ios-star icon-small"></i>
+                    160+ top chefs
+               </div>    
+               <div class="city-feature">
+                   <i class="ion-social-twitter icon-small"></i>
+                   <a href="#">@omnifood_sf</a>
+               </div>    
+            </div> 
+            <div class="col span-1-of-4 box">
+               <img src="resources/img/berlin.jpg" alt="Berlin">
+               <h3>Berlin</h3>
+               <div class="city-feature">
+                   <i class="ion-ios-person icon-small"></i>
+                    2,300+ happy eaters
+               </div>    
+               <div class="city-feature">
+                   <i class="ion-ios-star icon-small"></i>
+                    110+ top chefs
+               </div>    
+               <div class="city-feature">
+                   <i class="ion-social-twitter icon-small"></i>
+                   <a href="#">@omnifood_berlin</a>
+               </div>    
+            </div>
+            <div class="col span-1-of-4 box">
+               <img src="resources/img/london.jpg" alt="London">
+               <h3>London</h3>
+               <div class="city-feature">
+                   <i class="ion-ios-person icon-small"></i>
+                    1,200+ happy eaters
+               </div>    
+               <div class="city-feature">
+                   <i class="ion-ios-star icon-small"></i>
+                    50+ top chefs
+               </div>    
+               <div class="city-feature">
+                   <i class="ion-social-twitter icon-small"></i>
+                   <a href="#">@omnifood_london</a>
+               </div>    
+            </div>
+        </div>          
+     </section>
+     
+ </body>
+</html>
